@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+{% if results %}
+<ol>
+{%- for result in results %}
+    <li>{{ result.score | round(3) }}:
+        <a href="{{ result.id }}">{{ result.metadata.title or result.id }}</a>
+
+    {% if result.metadata.description %}
+        <p>{{ result.metadata.description }}</p>
+    {% else %}
+        <br>
+    {% endif %}
+
+        <form action="/cache" method="POST">
+            <input type="hidden" name="id" value="{{ result.id }}">
+            <input type="submit" value="Cached">
+        </form>
+    </li>
+{%- endfor %}
+</ol>
+{% else %}
+<p>No results found.</p>
+{% endif %}
+
+{% include "search_form.html" %}
+
+{% endblock %}
