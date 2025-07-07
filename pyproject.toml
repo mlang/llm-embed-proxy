@@ -1,0 +1,14 @@
+[project]
+name = "llm-embed-proxy"
+version = "0.1.0"
+description = "Proxy for similarity search over visited pages"
+readme = "README.md"
+license = "Apache-2.0"
+dependencies = [ "mitmproxy>=11.0.2", "python-frontmatter>=1.1.0" ]
+
+[[project.authors]]
+name = "Mario Lang"
+email = "mlang@blind.guru"
+
+[project.entry-points.llm]
+llm_embed_proxy = "llm_embed_proxy"

@@ -1,0 +1,9 @@
+[Unit]
+Description=MITM proxy which embeds visited content
+
+[Service]
+Type=exec
+ExecStart=%h/.local/bin/llm embed-proxy
+
+[Install]
+WantedBy=default.target
